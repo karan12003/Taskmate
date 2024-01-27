@@ -22,7 +22,7 @@ main()
     .catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect(process.env.Mongo_URL,{ 
+    await mongoose.connect("mongodb+srv://karan:1234@cluster0.cerk6pe.mongodb.net/devtown?retryWrites=true&w=majority",{ 
         useUnifiedTopology:true,
             useNewUrlParser: true,
             useCreateIndex: true    
