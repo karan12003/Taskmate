@@ -22,7 +22,7 @@ main()
     .catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect(process.env.Mongo_URL,{ useNewUrlParser: true });
+    await mongoose.connect(process.env.Mongo_URL,{ useNewUrlParser: true , useUnifiedTopology: true });
 }
 
 // Middlewares
