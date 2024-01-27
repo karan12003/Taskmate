@@ -2,6 +2,8 @@ Just install necessary dependencies by running "npm i" command and then hit "npm
 
 Default login account is user123 and password is 12345678
 
+Hosted at https://taskmate-kfuq.onrender.com
+
 Tech stack :
 
 NoSQL Database MongoDB.
