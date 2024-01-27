@@ -1,0 +1,134 @@
+:root{
+    --accent-color:#f78b27;
+    --bg-color:#FFFFFF;
+    --primary-color:#F9F9F9;
+    --text-color:#858585;
+    --icon-color:#858585ad;
+    --icon-hover-color:#858585;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: var(--bg-color);
+}
+
+span{
+    color:var(--accent-color)
+}
+
+i{
+    background-color: transparent;
+    color:var(--icon-color);
+}
+
+i:hover{
+    color:var(--icon-hover-color)
+}
+
+.sidebar{
+    /* transition:  ease 0.3s; */
+    transform: translateX(-100%);
+}
+
+.sidebar.activeSidebar{
+    transform: translateX(0);
+}
+
+@media screen and (min-width:1280px){
+    .sidebar{
+        transform: translateX(0);
+    }
+}
+
+@media screen and(max-width:1280px){
+    .sidebar{
+        transform: translateX(-100%);
+    }
+}
+
+
+
+.sidebar ul li{
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    cursor: pointer;
+    padding:0.5rem 1rem;
+    transform: translateY(0rem);
+    transition: all ease 0.3s;
+}
+
+.sidebar ul li:hover{
+    background-color: #85858522;
+    border-radius: 1rem;
+}
+
+.sidebar ul li.menuActive{
+    background-color: var(--accent-color);
+    color:var(--primary-color);
+    border-radius: 1rem;
+    font-weight: 600;
+}
+
+.sidebar ul li.active i{
+    color: var(--primary-color);   
+}
+
+option:checked{
+    color: var(--accent-color);
+}
+
+#Medium{
+    background-color: #F8EDC8;
+}
+
+#Low{
+    background-color: #C8F8CD;
+}
+#High{
+    background-color: #F8DFC8;
+}
+
+.dropdown{
+    position: relative;
+    padding: 0rem;
+}
+
+.dropdown:hover .dropcontent{
+    display: block;
+}
+
+.dropcontent{
+    display: none;
+    width:max-content;
+    position: absolute;
+    padding: 0.5rem 0.2rem;
+    border:1.6px solid #c4c3c3;
+    transform:translate(-0.75rem,0.25rem);
+    border-radius:0.75rem;
+    background-color: var(--bg-color);
+}
+
+.dropcontent p{
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:0.5rem;
+    border-radius: 0.75rem;
+}
+
+.dropcontent p span{
+    color:var(--icon-color);
+}
+
+.dropcontent p:hover{
+    color:var(--icon-hover-color);
+    background-color: #85858522;
+}

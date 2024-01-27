@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "name": "Karan",
+  "username": "karan123",
+  "password": "$2b$10$E1lFf.kbLWItV9F9T9kNUeKEHHVfPsSJd75/19z8ft2l7LuWJtfIO",
+  "role": "admin",
+  "tasks": [
+    {
+      "$oid": "65b227bc08dfa0ef4a917f8d"
+    },
+    {
+      "$oid": "65b2283b08dfa0ef4a917f93"
+    },
+    {
+      "$oid": "65b2287308dfa0ef4a917f9b"
+    },
+    {
+      "$oid": "65b228b808dfa0ef4a917fa1"
+    },
+    {
+      "$oid": "65b22a544d285c4dfff171ec"
+    },
+    {
+      "$oid": "65b22a7f4d285c4dfff171f2"
+    },
+    {
+      "$oid": "65b22ac84d285c4dfff171fa"
+    },
+    {
+      "$oid": "65b22b004d285c4dfff17202"
+    },
+    {
+      "$oid": "65b22b644d285c4dfff17208"
+    },
+    {
+      "$oid": "65b22b8c4d285c4dfff1720e"
+    },
+    {
+      "$oid": "65b22bfc4d285c4dfff17214"
+    },
+    {
+      "$oid": "65b22cbe4d285c4dfff1721a"
+    }
+  ],
+  "__v": 0,
+  "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImthcmFuMTIzIiwiaWF0IjoxNzA2MjY4NjMwfQ.BNMfk-3zaelOEew-gzybq9dhggcCYRNQ3ZsAIuBCVxHTXne4ocg0vaNhK4K1ff7Ffo-2nudIRj-UyD2-PP3E-rsWNFJBILRiCV8rPFDYyF_8pTupcknf9pFgZ07bDb7oDlQJBeidoMeeIrciahBAMH3ilBBiBO5uExd5T6pTYnNAO3_xPg7nctfUwPQnamq7-9E5ZjwnRcFaLDgXBcngHYfBkbFYl94DUzZsdGSsIQjcB72_cZ_QkJ40FhgYcKp7GOKa0rC4RwDeBBgKIOeX25glBKLXAVQABDS2e15QWwZ_I0py7Xu1TGsGcwQJPQqJUjWsfK9FfM2Z-XCgEIFWhtDlqUhZyq80uRgIw83yytvG-iT1GuO1DO0FCPc_gT1oKXEzLnI-ULsbgXpU5nW3togBPMrn291XaM8F8r04tJI5qqbixY1rObVPVEuypZev9jAAarFhSdVNh69yhcpQPGX6MFxgyyk4kON15mjiPiR_qHMFtXeprR8srXrDpfXfIDPrWkO3N4OZh7mqBRBQHhTNffF70rDxVBrqQOyrX90GFgj4c1VaDJnuzAYJGOz8oOrOzo6MgOnM3NHAg-1iIO7attbikEFO6_S460xDqwXxfzb0SDxEvjyi4PasXk5opUoYouOC5sXevDy0Q-8OEBjj0LlFHADQQiryOtcQsyc"
+}]

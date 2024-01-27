@@ -1,0 +1,259 @@
+[{
+  "_id": {
+    "$oid": "65b227bc08dfa0ef4a917f8d"
+  },
+  "title": "Devtown Assignment",
+  "description": "Submit the devtown assignment",
+  "status": "ongoing",
+  "priority": "High",
+  "category": "development",
+  "dueDate": {
+    "$date": "2024-01-26T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:19:56.020Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "devtown-assignment",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b2283b08dfa0ef4a917f93"
+  },
+  "title": "Frontend",
+  "description": "Creative UI for mini project.",
+  "status": "todo",
+  "priority": "Medium",
+  "category": "design",
+  "dueDate": {
+    "$date": "2024-01-31T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:22:03.403Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "frontend",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b2287308dfa0ef4a917f9b"
+  },
+  "title": "AWS",
+  "description": "Integrate AWS in Devtown task",
+  "status": "ongoing",
+  "priority": "High",
+  "category": "development",
+  "dueDate": {
+    "$date": "2024-01-26T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:22:59.315Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "aws",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b228b808dfa0ef4a917fa1"
+  },
+  "title": "Ideathon",
+  "description": "Pitch Idea in IIC",
+  "status": "completed",
+  "priority": "Low",
+  "category": "research",
+  "dueDate": {
+    "$date": "2024-01-25T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:24:08.943Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "ideathon",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22a544d285c4dfff171ec"
+  },
+  "title": "Reseach Paper",
+  "description": "Irregularites in Metals at atomic level",
+  "status": "todo",
+  "priority": "Low",
+  "category": "research",
+  "dueDate": {
+    "$date": "2024-02-15T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:31:00.909Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "reseach-paper",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22a7f4d285c4dfff171f2"
+  },
+  "title": "ChatGPT",
+  "description": "Chnages in UI of ChatGPT project",
+  "status": "todo",
+  "priority": "Medium",
+  "category": "design",
+  "dueDate": {
+    "$date": "2024-01-31T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:31:43.199Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "chatgpt",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22ac84d285c4dfff171fa"
+  },
+  "title": "Develop Backend System",
+  "description": "Backend for Mini Project",
+  "status": "overdue",
+  "priority": "Medium",
+  "category": "personal",
+  "dueDate": {
+    "$date": "2024-01-31T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:32:56.515Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "develop-backend-system",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22b004d285c4dfff17202"
+  },
+  "title": "Integrate DynamoDB",
+  "description": "Imply use of AWS in the assignment ",
+  "status": "ongoing",
+  "priority": "High",
+  "category": "development",
+  "dueDate": {
+    "$date": "2024-01-26T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-22T09:33:52.321Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "integrate-dynamodb",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22b644d285c4dfff17208"
+  },
+  "title": "NextJS",
+  "description": "Learn NextJS & Typescript to be a better developer.",
+  "status": "overdue",
+  "priority": "Medium",
+  "category": "personal",
+  "dueDate": {
+    "$date": "2024-01-20T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-01T09:35:32.880Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "nextjs",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22b8c4d285c4dfff1720e"
+  },
+  "title": "Mern Stack",
+  "description": "Complete Mern stack before end of January",
+  "status": "completed",
+  "priority": "High",
+  "category": "personal",
+  "dueDate": {
+    "$date": "2024-01-31T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-01T09:36:12.583Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "mern-stack",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b22bfc4d285c4dfff17214"
+  },
+  "title": "Github",
+  "description": "Improve UI of existing projects",
+  "status": "todo",
+  "priority": "Low",
+  "category": "design",
+  "dueDate": {
+    "$date": "2024-02-10T00:00:00.000Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-25T09:38:04.093Z"
+  },
+  "__v": 0,
+  "createdBy": {
+    "$oid": "65b253f98600f30c925d542a"
+  },
+  "id": "github",
+  "username": "karan123"
+},
+{
+  "_id": {
+    "$oid": "65b39922ea57aef8a1ce85b0"
+  },
+  "title": "Welcome to Taskmate",
+  "description": "Start adding tasks now ",
+  "status": "todo",
+  "priority": "High",
+  "category": "personal",
+  "dueDate": {
+    "$date": "2024-01-26T11:36:02.123Z"
+  },
+  "createdDate": {
+    "$date": "2024-01-26T11:36:02.124Z"
+  },
+  "__v": 0
+}]
