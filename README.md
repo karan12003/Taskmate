@@ -1,4 +1,4 @@
-Just install necessary dependencies by running "npm i" command and then hit "npm run dev" command to run the server .
+Just install necessary dependencies by running "npm i" command and then hit "npm run dev" command to run the server ( Prior to this make sure NodeJS is installed in your system ).
 
 Default login account is user123 and password is 12345678
 
@@ -8,7 +8,9 @@ Tech stack :
 
 NoSQL Database MongoDB.
 
-Server developed using NodeJS & ExpressJS.
+Runtime environment NodeJS
+
+Server developed with ExpressJS.
 
 Design & Development via ReactJS & Tailwind CSS.
 
