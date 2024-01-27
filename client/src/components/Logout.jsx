@@ -30,7 +30,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/auth/logout", document.querySelector("#logout-form"), {
+        axios.post("/auth/logout", document.querySelector("#logout-form"), {
             headers: {
                 'Content-Type': 'application/json'
             }

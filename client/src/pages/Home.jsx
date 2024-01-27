@@ -28,7 +28,7 @@ export default function Home() {
     const signup = useSelector(state => state.auth.signup)
 
     const getTasks = () => {
-        axios.get("http://localhost:5000/task", { headers: { "authorization": token } })
+        axios.get("/task", { headers: { "authorization": token } })
             .then((res) => dispatch(setTasks(res.data.tasks)))
             // .then(()=> setLoading(false))
             .catch(err => displayAlert("alert",err.response.data.message))
@@ -62,7 +62,7 @@ export default function Home() {
     }
 
     const removeTask = (id) => {
-        axios.delete(`http://localhost:5000/task/${id}`, {
+        axios.delete(`/task/${id}`, {
             headers: {
                 authorization: token
             }
@@ -77,7 +77,7 @@ export default function Home() {
     const updateTask = (id) => {
         const addUpdateTask = document.querySelector(".updateTask")
         addUpdateTask.style.display = addUpdateTask.style.display === "flex" ? "none" : "flex";
-        axios.get(`http://localhost:5000/task/${id}`, {
+        axios.get(`/task/${id}`, {
             headers: {
                 authorization: token
             }
@@ -98,7 +98,7 @@ export default function Home() {
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:5000/task/${updateId}`, document.querySelector("#update-form"), {
+        axios.put(`/task/${updateId}`, document.querySelector("#update-form"), {
             headers: {
                 authorization: token,
                 'Content-Type': 'application/json'

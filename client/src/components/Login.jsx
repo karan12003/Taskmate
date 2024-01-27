@@ -26,7 +26,7 @@ function Login() {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/auth/login", document.querySelector("#login-form"), {
+        axios.post("/auth/login", document.querySelector("#login-form"), {
             headers: {
                 'Content-Type': 'application/json'
             }

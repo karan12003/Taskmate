@@ -14,6 +14,7 @@ const publicKey = fs.readFileSync(path.join(path.resolve(), './public.key'), "ut
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const MONGO_URL = process.env.Mongo_URL || "mongodb+srv://karan:1234@cluster0.cerk6pe.mongodb.net/devtown?retryWrites=true&w=majority";
 
 // Connecting MongoDB 
 
@@ -22,7 +23,7 @@ main()
     .catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect(process.env.Mongo_URL);
+    await mongoose.connect(MONGO_URL);
 }
 
 // Middlewares

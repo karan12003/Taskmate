@@ -45,7 +45,7 @@ export default function TaskList() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/task", document.querySelector('#form'), {
+        axios.post("/task", document.querySelector('#form'), {
             headers: {
                 'authorization': token,
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ export default function TaskList() {
 
 
     const removeTask = (id) => {
-        axios.delete(`http://localhost:5000/task/${id}`, {
+        axios.delete(`/task/${id}`, {
             headers: {
                 authorization: token
             }
@@ -89,7 +89,7 @@ export default function TaskList() {
         addUpdateTask.style.display = addUpdateTask.style.display === "flex" ? "none" : "flex";
 
 
-        axios.get(`http://localhost:5000/task/${id}`, {
+        axios.get(`/task/${id}`, {
             headers: {
                 authorization: token
             }
@@ -112,7 +112,7 @@ export default function TaskList() {
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:5000/task/${updateId}`, document.querySelector("#update-form"), {
+        axios.put(`/task/${updateId}`, document.querySelector("#update-form"), {
             headers: {
                 authorization: token,
                 'Content-Type': 'application/json'
