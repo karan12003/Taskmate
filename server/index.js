@@ -1,5 +1,4 @@
 import express from 'express'
-import cors from 'cors'
 import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import path from 'path'
@@ -28,8 +27,7 @@ async function main() {
 
 // Middlewares
 
-app.use(cors())
-    .use(express.json())
+app.use(express.json())
     .use("/",express.static('dist'))
     .use("/auth", authRouter)
     .use((req, res, next) => {
