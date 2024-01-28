@@ -46,19 +46,15 @@ function Sidebar() {
 
         ul.forEach((li) => {
             li.style.transform = li.style.transform === "translateY(-15rem)" ? "translateY(0rem)" : "translateY(-15rem)";
-            // li.style.transition = "all ease 0.3s";
+            li.style.transition = "all ease 0.3s";
         })
 
         i.style.transform = i.style.transform === "rotate(-90deg)" ? "rotate(0deg)" : "rotate(-90deg)";
 
-        // i.style.transition = "all ease 0.3s"
+        i.style.transition = "all ease 0.3s"
     }
     
     setTimeout(menuToggle,10)
-
-    // useEffect(()=>{
-
-    // },[])
 
     return (
         <>

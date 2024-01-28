@@ -53,5 +53,5 @@ app.use(cors())
 // Listening Server
 
 app.listen(PORT, () => {
-    console.log(`Server is working at http://localhost:${PORT}`)
+    console.log(`\nWelcome to TaskMate,\n\nThe server is working at http://localhost:${PORT}\n`)
 })
