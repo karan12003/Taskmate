@@ -32,7 +32,7 @@ i:hover{
 }
 
 .sidebar{
-    /* transition:  ease 0.3s; */
+    transition: all ease-in-out 0.3s;
     transform: translateX(-100%);
 }
 
@@ -108,9 +108,9 @@ option:checked{
     display: none;
     width:max-content;
     position: absolute;
-    padding: 0.5rem 0.2rem;
+    padding: 0.5rem 0.3rem;
     border:1.6px solid #c4c3c3;
-    transform:translate(-0.75rem,0.25rem);
+    transform:translate(-0.6rem,0.25rem);
     border-radius:0.75rem;
     background-color: var(--bg-color);
 }
@@ -131,4 +131,10 @@ option:checked{
 .dropcontent p:hover{
     color:var(--icon-hover-color);
     background-color: #85858522;
+}
+
+@media screen and (max-width:786px){
+    .dropcontent{
+        transform:translate(-1.1rem,0.4rem);
+    }
 }

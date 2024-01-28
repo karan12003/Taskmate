@@ -27,9 +27,9 @@ function Header() {
     return (
 
         <div className="fixed top-0 left-0 xl:left-[15rem] z-40 flex items-center justify-between bg-white px-12 pt-9 pb-4 w-full xl:w-[82.5%] text-sm text-[var(--icon-color)]">
-            <div onClick={() => document.querySelector(".newTask").style.display = "flex"} className="text-white bg-[var(--accent-color)] py-2 px-4 rounded-xl cursor-pointer">New Task <i className="fa-solid fa-chevron-down text-white"></i></div>
+            <div onClick={() => document.querySelector(".newTask").style.display = "flex"} className="text-white bg-[var(--accent-color)] py-2 px-4 rounded-xl cursor-pointer flex items-center gap-2   "><p>New Task</p> <i className="fa-solid fa-chevron-down text-white"></i></div>
             <ul className="flex items-center gap-4">
-                <li className="dropdown flex items-center gap-7 border-[1.6px] border-[#c4c3c3] rounded-xl px-2 py-1 cursor-pointer">
+                <li className="dropdown translate-x-[1.5rem] md:translate-x-0 flex items-center gap-4 md:gap-8 border-[1.6px] border-[#c4c3c3] rounded-xl py-[0.375rem] px-4 md:px-2 md:py-1 cursor-pointer">
                     <div className="">
                         <div className="dropbtn">Sort</div>
                         <div className="dropcontent">

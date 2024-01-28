@@ -4,19 +4,21 @@ import logo from '../assets/logo.png'
 import axios from 'axios'
 import Alert from './Alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { setToken } from '../store/tokenSlice';
+import { setName, setToken, setUser } from '../store/tokenSlice';
 import { setLogin, setSignup } from '../store/tokenSlice';
 
-function Login() {
+function Logout() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [alert, setAlert] = useState(null)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const token = useSelector(state => state.auth.token)
-    const name =useSelector(state => state.auth.name)
-    const user =useSelector(state => state.auth.user)
+    
+    const credentials = JSON.parse(localStorage.getItem("credentials"))
+    const token = credentials?.token
+    const name = credentials?.name
+    const user = credentials?.username
 
     const displayAlert = (type, msg) => {
         setAlert({
@@ -30,14 +32,17 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("/auth/logout", document.querySelector("#logout-form"), {
+        axios.post("http://localhost:5000/auth/logout", document.querySelector("#logout-form"), {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then(res => {
                 displayAlert("success", res.data.message)
+                localStorage.removeItem('credentials')
                 dispatch(setToken(""))
+                dispatch(setName(""))
+                dispatch(setUser(""))
                 navigate("/")
             })
             .then(() => {
@@ -48,7 +53,7 @@ function Login() {
             })
             .catch(err => {
                 displayAlert("alert", err.response.data.message || err.message)
-                console.log(err.response.data.message)
+                console.log(err.response)
             })
     }
 
@@ -81,4 +86,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Logout

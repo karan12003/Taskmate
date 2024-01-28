@@ -9,6 +9,7 @@ import NewTask from "../components/NewTask";
 import List from "../components/List";
 import { setTasks } from "../store/taskSlice";
 import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
 export default function TaskList() {
 
@@ -25,15 +26,14 @@ export default function TaskList() {
     const dispatch = useDispatch();
     const params = useParams();
 
-    var token = useSelector(state => (state.auth.token))
+    const credentials = JSON.parse(localStorage.getItem("credentials"))
+  
+    const token = credentials?.token;
+
     const login = useSelector(state => state.auth.login)
     const signup = useSelector(state => state.auth.signup)
 
     let tasks = useSelector((state) => state.taskmate.tasks)
-    const todo = useSelector((state) => state.taskmate.todo)
-    const ongoing = useSelector((state) => state.taskmate.ongoing)
-    const completed = useSelector((state) => state.taskmate.completed)
-    const overdue = useSelector((state) => state.taskmate.overdue)
 
     if(params.category){
         tasks = tasks.filter(task => task.category===params.category)
@@ -45,7 +45,7 @@ export default function TaskList() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("/task", document.querySelector('#form'), {
+        axios.post("http://localhost:5000/task", document.querySelector('#form'), {
             headers: {
                 'authorization': token,
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ export default function TaskList() {
 
 
     const removeTask = (id) => {
-        axios.delete(`/task/${id}`, {
+        axios.delete(`http://localhost:5000/task/${id}`, {
             headers: {
                 authorization: token
             }
@@ -89,15 +89,15 @@ export default function TaskList() {
         addUpdateTask.style.display = addUpdateTask.style.display === "flex" ? "none" : "flex";
 
 
-        axios.get(`/task/${id}`, {
+        axios.get(`http://localhost:5000/task/${id}`, {
             headers: {
                 authorization: token
             }
         })
             .then(res => {
-                setTitle(res.data.task.task)
-                setDescription(res.data.task.description)
                 setTitle(res.data.task.title)
+                setDescription(res.data.task.description)
+                setCategory(res.data.task.category)
                 setPriority(res.data.task.priority)
                 setStatus(res.data.task.status)
                 setUpdateId(res.data.task.id)
@@ -112,7 +112,7 @@ export default function TaskList() {
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault()
-        axios.put(`/task/${updateId}`, document.querySelector("#update-form"), {
+        axios.put(`http://localhost:5000/task/${updateId}`, document.querySelector("#update-form"), {
             headers: {
                 authorization: token,
                 'Content-Type': 'application/json'
@@ -130,6 +130,9 @@ export default function TaskList() {
     }
 
     return (
+        <>
+            <Sidebar />
+        
         <div className="relative min-h-screen overflow-hidden">
             {
                 alert &&
@@ -220,5 +223,6 @@ export default function TaskList() {
 
             </div>
         </div>
+        </>
     )
 }

@@ -8,6 +8,8 @@ import Signup from "../components/Signup";
 import NewTask from "../components/NewTask";
 import { setTasks } from "../store/taskSlice";
 import Header from "../components/Header";
+import { setLogin, setSignup } from "../store/tokenSlice";
+import Sidebar from '../components/Sidebar'
 
 export default function Home() {
 
@@ -18,104 +20,107 @@ export default function Home() {
     const [alert, setAlert] = useState(null)
     const [priority, setPriority] = useState("Medium")
     const [category, setCategory] = useState("personal")
-    const [updateId,setUpdateId]=useState("")
+    const [updateId, setUpdateId] = useState("")
     const [loading, setLoading] = useState(false)
-
+  
     const dispatch = useDispatch();
-
-    var token = useSelector(state => (state.auth.token))
+  
     const login = useSelector(state => state.auth.login)
     const signup = useSelector(state => state.auth.signup)
-
+  
+    const credentials = JSON.parse(localStorage.getItem("credentials"))
+  
+    const token = credentials?.token;
+  
+    if (token) {
+      dispatch(setLogin(false));
+      dispatch(setSignup(false))
+    }
+  
     const getTasks = () => {
-        axios.get("/task", { headers: { "authorization": token } })
-            .then((res) => dispatch(setTasks(res.data.tasks)))
-            // .then(()=> setLoading(false))
-            .catch(err => displayAlert("alert",err.response.data.message))
+      axios.get("http://localhost:5000/task", { headers: { "authorization": token } })
+        .then((res) => dispatch(setTasks(res.data.tasks)))
+        .catch(err => displayAlert("alert", err.response.data.message))
     }
-
+  
     const tasks = useSelector((state) => state.taskmate.tasks)
-    const todo = useSelector((state) => state.taskmate.todo)
-    const ongoing = useSelector((state) => state.taskmate.ongoing)
-    const completed = useSelector((state) => state.taskmate.completed)
-    const overdue = useSelector((state) => state.taskmate.overdue)
-
-    // console.log('re-rendered');
-
+  
+  
     useEffect(() => {
-        getTasks()
+      getTasks()
     }, [token])
-
-    const handleClick = (id) => {
-        // console.log(id)
-    }
-
-
+  
+  
     const displayAlert = (type, msg) => {
-        setAlert({
-            type: type,
-            message: msg
-        })
-        setTimeout(() => {
-            setAlert(null)
-        }, 1500)
+      setAlert({
+        type: type,
+        message: msg
+      })
+      setTimeout(() => {
+        setAlert(null)
+      }, 1500)
     }
-
+  
     const removeTask = (id) => {
-        axios.delete(`/task/${id}`, {
-            headers: {
-                authorization: token
-            }
+      axios.delete(`http://localhost:5000/task/${id}`, {
+        headers: {
+          authorization: token
+        }
+      })
+        .then(res => {
+          displayAlert("alert", "Task deleted Successfully")
+          dispatch(setTasks(tasks.filter((task) => task.id !== id)))
         })
-            .then(res => {
-                displayAlert("alert", "Task deleted Successfully")
-                dispatch(setTasks(tasks.filter((task)=> task.id!==id)))
-            })
-            .catch(err => console.log(err.response.data.message))
+        .catch(err => console.log(err.response.data.message))
     }
-
+  
     const updateTask = (id) => {
-        const addUpdateTask = document.querySelector(".updateTask")
-        addUpdateTask.style.display = addUpdateTask.style.display === "flex" ? "none" : "flex";
-        axios.get(`/task/${id}`, {
-            headers: {
-                authorization: token
-            }
+      const addUpdateTask = document.querySelector(".updateTask")
+      addUpdateTask.style.display = addUpdateTask.style.display === "flex" ? "none" : "flex";
+      axios.get(`http://localhost:5000/task/${id}`, {
+        headers: {
+          authorization: token
+        }
+      })
+        .then(res => {
+          setDescription(res.data.task.description)
+          setTitle(res.data.task.title)
+          setPriority(res.data.task.priority)
+          setStatus(res.data.task.status)
+          setUpdateId(res.data.task.id)
+          setCategory(res.data.task.category)
+          setDueDate(new Date())
+  
         })
-            .then(res => {
-                setDescription(res.data.task.description)
-                setTitle(res.data.task.title)
-                setPriority(res.data.task.priority)
-                setStatus(res.data.task.status)
-                setUpdateId(res.data.task.id)
-            })
-            .catch(err => {
-                if (err.response.data.message !== "Task not found")
-                    displayAlert("alert", err.response.data.message || "Some error occured")
-            })
-
+        .catch(err => {
+          displayAlert("alert", err.response.data.message)
+        })
+  
     }
-
+  
+  
     const handleUpdateSubmit = (e) => {
-        e.preventDefault()
-        axios.put(`/task/${updateId}`, document.querySelector("#update-form"), {
-            headers: {
-                authorization: token,
-                'Content-Type': 'application/json'
-            }
+      e.preventDefault()
+      axios.put(`http://localhost:5000/task/${updateId}`, document.querySelector("#update-form"), {
+        headers: {
+          authorization: token,
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => {
+          displayAlert("success", "Task Updated Successfully")
+          dispatch(setTasks([...tasks.filter((task) => task._id !== res.data.task._id), res.data.task]))
+          document.querySelector(".updateTask").style.display = "none"
         })
-            .then(res => {
-                displayAlert("success", "Task Updated Successfully")
-                dispatch(setTasks([...tasks.filter((task)=> task._id!==res.data.task._id),res.data.task]))
-                document.querySelector(".updateTask").style.display = "none"
-            })
-            .catch(err => {
-                displayAlert("alert", err.response.data.message || "Some error occured");   
-            })
-
+        .catch(err => {
+          displayAlert("alert", err.response.data.message || "Some error occured");
+        })
+  
     }
 
     return (
+        <>
+        <Sidebar />
         <div className="relative min-h-screen overflow-hidden">
             {
                 alert &&
@@ -171,61 +176,61 @@ export default function Home() {
                 }
                 {
                     !loading && !login && !signup &&
-                    <div className="w-full grid grid-cols-1 mt-12 sm:grid-cols-2 rounded-2xl md:flex gap-4 py-4 px-2 bg-[var(--primary-color)]">
-                        <div className="flex flex-col gap-2 w-[100%] md:w-[25%]">
+                    <div className="w-full grid grid-cols-1 mt-12 sm:grid-cols-2 rounded-2xl md:grid-cols-3 lg:grid-cols-4 gap-4 py-4 px-2 bg-[var(--primary-color)]">
+                        <div className="flex flex-col gap-2 w-[100%] ">
                             <div className="w-full flex justify-between bg-white p-2 rounded-xl">
                                 <p>Todo</p>
                                 <p><i className="fa-solid fa-ellipsis px-2"></i> <i className="fa-solid fa-square-plus"></i></p>
                             </div>
                             <div className="flex flex-col gap-2 z-0">
                                 {
-                                    todo.map((task) => (
-                                        <div onClick={() => handleClick(task.priority)} id={task.priority} className="bg-white rounded-3xl p-2" key={task.id}>
+                                    tasks.filter((task) => task.status === 'todo').map((task) => (
+                                        <div  id={task.priority} className="bg-white rounded-3xl p-2" key={task.id}>
                                             <Card task={task} removeTask={() => removeTask(task.id)} updateTask={() => updateTask(task.id)} />
                                         </div>
                                     ))
                                 }
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2 w-[100%] md:w-[25%]">
+                        <div className="flex flex-col gap-2 w-[100%] ">
                             <div className="w-full flex justify-between bg-white p-2 rounded-xl">
                                 <p>Ongoing</p>
                                 <p><i className="fa-solid fa-ellipsis px-2"></i> <i className="fa-solid fa-square-plus"></i></p>
                             </div>
                             <div className="flex flex-col gap-2">
                                 {
-                                    ongoing.map((task) => (
-                                        <div onClick={() => handleClick(task.priority)} id={task.priority} className="rounded-3xl p-2" key={task.id}>
+                                    tasks.filter((task) => task.status === 'ongoing').map((task) => (
+                                        <div id={task.priority} className="rounded-3xl p-2" key={task.id}>
                                             <Card task={task} removeTask={() => removeTask(task.id)} updateTask={() => updateTask(task.id)} />
                                         </div>
                                     ))
                                 }
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2 w-[100%] md:w-[25%]">
+                        <div className="flex flex-col gap-2 w-[100%] ">
                             <div className="w-full flex justify-between bg-white p-2 rounded-xl">
                                 <p>Completed</p>
                                 <p><i className="fa-solid fa-ellipsis px-2"></i> <i className="fa-solid fa-square-plus"></i></p>
                             </div>
                             <div className=" flex flex-col gap-2">
                                 {
-                                    completed.map((task) => (
-                                        <div onClick={() => handleClick(task.priority)} id={task.priority} className="rounded-3xl p-2" key={task.id}>
+                                    tasks.filter((task) => task.status === 'completed').map((task) => (
+                                        <div id={task.priority} className="rounded-3xl p-2" key={task.id}>
                                             <Card task={task} removeTask={() => removeTask(task.id)} updateTask={() => updateTask(task.id)} />
                                         </div>
                                     ))
                                 }
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2 w-[100%] md:w-[25%]">
+                        <div className="flex flex-col gap-2 w-[100%] ">
                             <div className="w-full flex justify-between bg-white p-2 rounded-xl">
                                 <p>Overdue</p>
                                 <p><i className="fa-solid fa-ellipsis px-2"></i> <i className="fa-solid fa-square-plus"></i></p>
                             </div>
                             <div className=" flex flex-col gap-2">
                                 {
-                                    overdue.map((task) => (
-                                        <div onClick={() => handleClick(task.priority)} id={task.priority} className="rounded-3xl p-2" key={task.id}>
+                                    tasks.filter((task) => task.status === 'overdue').map((task) => (
+                                        <div id={task.priority} className="rounded-3xl p-2" key={task.id}>
                                             <Card task={task} removeTask={() => removeTask(task.id)} updateTask={() => updateTask(task.id)} />
                                         </div>
                                     ))
@@ -237,5 +242,6 @@ export default function Home() {
 
             </div>
         </div>
+        </>
     )
 }

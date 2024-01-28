@@ -19,7 +19,7 @@ function NewTask({token, displayAlert }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("/task", document.querySelector('#form'), {
+        axios.post("http://localhost:5000/task", document.querySelector('#form'), {
             headers: {
                 'authorization': token,
                 'Content-Type': 'application/json'

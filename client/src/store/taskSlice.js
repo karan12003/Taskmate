@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    "tasks":[],
-    "todo":[],
-    "ongoing":[],
-    "completed":[],
-    "overdue":[]
+    "tasks":[]
 }
 
 export const taskSlice = createSlice({
@@ -13,15 +9,11 @@ export const taskSlice = createSlice({
     initialState,
     reducers:{
         setTasks:(state,action)=>{
-            state.tasks = action.payload;
-            state.todo = state.tasks.filter((task) => task.status==='todo')
-            state.ongoing = state.tasks.filter((task) => task.status==='ongoing')
-            state.completed = state.tasks.filter((task) => task.status==='completed')
-            state.overdue = state.tasks.filter((task) => task.status==='overdue')
+            state.tasks = action.payload
         }
     }
 })
 
-export const {setCompleted,setOngoing,setOverdue,setTasks,setTodo} = taskSlice.actions;
+export const {setTasks} = taskSlice.actions;
 
 export default taskSlice.reducer
