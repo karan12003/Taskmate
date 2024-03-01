@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken'
 import path from 'path'
 import fs from 'fs'
 import 'dotenv/config'
+import cors from 'cors'
 import authRouter from './routes/authRouter.js'
 import userRouter from './routes/userRouter.js'
 import taskRouter from './routes/taskRouter.js'
@@ -27,7 +28,7 @@ async function main() {
 
 // Middlewares
 
-app.use(express.json())
+app.use(cors()).use(express.json())
     .use("/",express.static('dist'))
     .use("/auth", authRouter)
     .use((req, res, next) => {
