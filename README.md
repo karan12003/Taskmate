@@ -34,6 +34,6 @@ MERN with Tailwind CSS
 Hosted at:
 
 
-https://taskmate-4q97b.ondigitalocean.app
+https://taskmate-kfuq.onrender.com/
 
 Default login account is user123 and password is 12345678
