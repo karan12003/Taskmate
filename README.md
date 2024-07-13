@@ -34,6 +34,7 @@ MERN with Tailwind CSS
 Hosted at:
 
 
-https://taskmate-kfuq.onrender.com/
+https://taskmate-kfuq.onrender.com
+(Kindly wait a minute for server to get deployed )
 
 Default login account is user123 and password is 12345678
